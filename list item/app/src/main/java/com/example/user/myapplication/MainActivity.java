@@ -1,8 +1,10 @@
 package com.example.user.myapplication;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
@@ -54,6 +56,19 @@ public class MainActivity extends ListActivity {
         // 5個參數 : context , List , layout , key1 & key2 , text1 & text2
         //http://aiur3908.blogspot.tw/2015/06/android-listview.html
         setListAdapter(adapter);
+
     }
 
-}
+    protected void onListItemClick (ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        Intent intent = new Intent(MainActivity.this,Main2Activity.class);
+        intent.putExtra("n",position);
+        startActivityForResult(intent,111);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
